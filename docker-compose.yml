@@ -25,13 +25,7 @@ services:
     depends_on:
       - postgres
 
-  etl-job:
-    image: python:3.9
-    volumes:
-      - ./etl.py:/etl.py
-      - ./crontab:/etc/crontab
-    command: ["crond", "-f"]
-    restart: always
+
     
 
 volumes:
