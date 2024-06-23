@@ -1,0 +1,9 @@
+version: '3'
+services:
+  etl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./etl.py:/app/etl.py
+    command: ["sh", "-c", "while true; do python /app/etl.py; sleep 21600; done"]
