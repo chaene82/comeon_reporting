@@ -1,0 +1,18 @@
+version: '3'
+services:
+  superset:
+    image: apache/superset:latest
+    ports:
+      - "28088:8088"
+    environment:
+      - SUPERSET_CONFIG=superset_config.py
+    volumes:
+      - ./superset_config.py:/etc/superset/superset_config.py
+    depends_on:
+      - db
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=superset
+      - POSTGRES_PASSWORD=superset
+      - POSTGRES_DB=superset
